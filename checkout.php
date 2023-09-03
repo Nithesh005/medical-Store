@@ -132,6 +132,7 @@ if(isset($_POST['submit'])){
          <option value="paypal">paypal</option>
       </select>
       <input type="submit" value="place order" class="btn <?php if($fetch_profile['address'] == ''){echo 'disabled';} ?>" style="width:100%; background:var(--red); color:var(--white);" name="submit">
+      <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_MWeCY7tTQkzlga" async> </script> </form>
    </div>
 
 </form>
