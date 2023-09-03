@@ -8,6 +8,9 @@
    --light-color:#777;
    --border:.2rem solid var(--black);
 }
+.razorpay-payment-button{
+   display: none;
+}
 
 *{
    font-family: 'Rubik', sans-serif;
