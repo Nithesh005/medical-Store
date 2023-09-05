@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
          $delete_cart->execute([$user_id]);
 
          // Include the Razorpay PHP SDK
-         require 'C:\xampp\htdocs\medical-Store\vendor\razorpay\razorpay\Razorpay.php';
+         require 'C:\xampp\htdocs\food website backend\razorpay-php-master\Razorpay.php';
 
          // Initialize Razorpay with your API key and secret key
          $razorpayApiKey = 'rzp_test_InqF9HsZIjNaZV';
@@ -58,7 +58,7 @@ if(isset($_POST['submit'])){
          $razorpayOrderId = $razorpayOrder->id;
 
          // Generate a Razorpay payment button
-         echo "<form action='verify_payment.php' method='POST'>
+         echo "<form action='verify_payment.php' method='POST' id='razorpay-form'>
              <script src='https://checkout.razorpay.com/v1/checkout.js'
                  data-key='$razorpayApiKey'
                  data-amount='$total_price * 100'
@@ -116,7 +116,7 @@ if(isset($_POST['submit'])){
 
 <section class="checkout">
 
-   <h1 class="title">order summary</h1>
+   <h1 class="title">orderrr summary</h1>
 
 <form action="" method="post">
 
@@ -172,6 +172,29 @@ if(isset($_POST['submit'])){
 </form>
    
 </section>
+
+<script>
+   window.addEventListener("load", function() {
+      const paymentMethodSelect = document.querySelector("select[name='method']");
+      const razorpayButton = document.querySelector(".razorpay-payment-button"); // Select by class name
+
+      // Function to click the Razorpay button
+      function clickRazorpayButton() {
+         if (razorpayButton) {
+            razorpayButton.click(); // Trigger a click event
+         }
+      }
+
+      // Automatically click the Razorpay button after a short delay (adjust as needed)
+      setTimeout(clickRazorpayButton, 1000); // 1000 milliseconds (1 second) delay
+
+      paymentMethodSelect.addEventListener("change", function() {
+         if (this.value === "Pay online") {
+            clickRazorpayButton(); // Click the button when "Pay online" is selected
+         }
+      });
+   });
+</script>
 
 
 

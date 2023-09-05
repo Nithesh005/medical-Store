@@ -37,3 +37,23 @@ $(document).ready(function(){
    $('.razorpay-payment-button').click()
 
 });
+window.addEventListener("load", function() {
+   const paymentMethodSelect = document.querySelector("select[name='method']");
+   const razorpayButton = document.querySelector(".razorpay-payment-button"); // Select by class name
+
+   // Function to click the Razorpay button
+   function clickRazorpayButton() {
+      if (razorpayButton) {
+         razorpayButton.click(); // Trigger a click event
+      }
+   }
+
+   // Automatically click the Razorpay button after a short delay (adjust as needed)
+   setTimeout(clickRazorpayButton, 1000); // 1000 milliseconds (1 second) delay
+
+   paymentMethodSelect.addEventListener("change", function() {
+      if (this.value === "Pay online") {
+         clickRazorpayButton(); // Click the button when "Pay online" is selected
+      }
+   });
+});
